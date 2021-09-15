@@ -1,0 +1,69 @@
+
+
+.background{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+
+}
+
+.framePhotoContainer{
+
+    background: white;
+    width: 800px;
+    height: 600px;
+    z-index: 1;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    
+}
+
+.linkPos{
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    width: 500px;
+    bottom: 7%;
+    transform: translateX(-50%);
+}
+
+.imgBtn{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-preview-pos{
+    width: 600px;
+    height: 400px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid;
+}
+
+.image-preview{
+    border: 2px solid #DDDDDD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color:#cccccc;
+}
+.image-preview__image{
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imgPosObj{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

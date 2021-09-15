@@ -1,0 +1,114 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <!-- Place favicon.ico in the root directory -->
+
+ 
+  <link rel="stylesheet" href="css/etphoto.css">
+
+  <meta name="theme-color" content="#fafafa">
+
+  <script src=
+"https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js">
+    </script>
+</head>
+
+<body style="height:100vh; background:black;">
+    <div class="">
+        <div id="photo" class="framePhotoContainer">
+            <img class="imgPosObj" src="resources/ET.png"/>
+            <div class="image-preview image-preview-pos" id="imagePreview">
+                <img src="" alt="Image Preview" class="image-preview__image">
+                <span class="image-preview__default-text">Image Preview</span>
+            </div>
+        </div>
+        <div class="linkPos">
+            <input style="display: none;" type="file" name="inpFile" id="inpFile">
+            <label style="margin-bottom: 20px;" for="inpFile"><img class="imgBtn" src="resources/upload.png"/></label>
+            <a onclick="takeshot()"><img style="width:100%" src="resources/saveFrame.png"/></a>
+        </div>
+    </div>
+    
+    
+    
+
+    <div>
+        <img class="background position-absolute" src="resources/clock.jpg"/>
+        <!--<div class="background"></div>-->
+    </div>
+        
+   
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+        <script>
+            const inpFile= document.getElementById("inpFile");
+            const previewContainer = document.getElementById("imagePreview");
+            const previewImage = previewContainer.querySelector(".image-preview__image");
+            const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
+            inpFile.addEventListener("change", function(){
+                const file = this.files[0];
+                if(file){
+                    const reader = new FileReader();
+                    previewDefaultText.style.display = "none";
+                    previewImage.style.display = "block";
+                    reader.addEventListener("load", function(){
+                        console.log(this);
+                        previewImage.setAttribute("src", this.result);
+                    });
+                    reader.readAsDataURL(file);
+                }
+            });
+        </script>
+        <script type="text/javascript">
+            // Define the function 
+            // to screenshot the div
+            function takeshot() {
+                let div =
+                    document.getElementById('photo');
+                // Use the html2canvas
+                // function to take a screenshot
+                // and append it
+                // to the output div
+                html2canvas(div).then(
+                    function (canvas) {
+                        download(canvas, 'myimage.png');
+                    })
+            }
+            function download(canvas, filename) {
+            /// create an "off-screen" anchor tag
+                var lnk = document.createElement('a'), e;
+                /// the key here is to set the download attribute of the a tag
+                lnk.download = filename;
+                /// convert canvas content to data-uri for link. When download
+                /// attribute is set the content pointed to by link will be
+                /// pushed as "download" in HTML5 capable browsers
+                lnk.href = canvas.toDataURL("image/png;base64");
+                /// create a "fake" click-event to trigger the download
+                if (document.createEvent) {
+                    e = document.createEvent("MouseEvents");
+                    e.initMouseEvent("click", true, true, window,
+                                    0, 0, 0, 0, 0, false, false, false,
+                                    false, 0, null);
+                    lnk.dispatchEvent(e);
+                } else if (lnk.fireEvent) {
+                    lnk.fireEvent("onclick");
+                }
+            }
+        </script>
+</body>
+
+</html>
+

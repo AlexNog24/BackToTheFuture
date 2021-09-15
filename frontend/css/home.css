@@ -1,0 +1,36 @@
+.navigationBar{
+    height: 90px;
+    background-color:gray;
+}
+
+.linkAlignment{
+    width: fit-content;
+    margin: auto;
+    display: block;
+    vertical-align: middle;
+}
+
+.homePicContainer{
+    max-height: calc(100vh);
+    overflow: hidden;
+    position: relative;
+}
+
+.imgHome{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.btnContainer{
+    position:absolute;
+    bottom:20%;
+}
+
+.imgsHome{
+    width: 500px;
+}
+
+.btn-goToAge{
+    font-size:24px;
+}
